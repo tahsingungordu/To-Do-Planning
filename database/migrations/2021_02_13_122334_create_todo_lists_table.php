@@ -16,10 +16,10 @@ class CreateTodoListsTable extends Migration
         Schema::create('todo_lists', function (Blueprint $table) {
             $table->id();
             $table->smallInteger('job_list_id');
-            $table->string('external_id', 200);
+            $table->string('external_id', 200)->index();
             $table->string('title', 200);
             $table->mediumInteger('time_hour');
-            $table->smallInteger('difficulty');
+            $table->smallInteger('difficulty')->index();
             $table->timestamps();
         });
     }
