@@ -2,6 +2,26 @@
 
 @section('content')
 <div class="row">
+    <div class="col-md-4">
+        <div class="alert alert-primary" role="alert">
+            Tüm işlerin toplam tamamlanma saati <br />
+            <h5>{{ $totalCompletionHour }} saat</h5>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="alert alert-primary" role="alert">
+            Tüm işlerin toplam tamamlanma günü <br />
+            <h5>{{ $totalCompletionDay }} gün</h5>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="alert alert-primary" role="alert">
+            Tüm işlerin toplam tamamlanma haftası <br />
+            <h5>{{ $totalCompletionWeek }} hafta</h5>
+        </div>
+    </div>
+</div>
+<div class="row">
     @foreach($weeklyJobList as $weeklyJobsKey => $weeklyJobs)
         @php
             $weeklyJobKeyParts = explode('-', $weeklyJobsKey);

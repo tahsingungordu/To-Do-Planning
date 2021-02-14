@@ -95,7 +95,6 @@ class TodoListHelper
                                    ->first();
         $largestTotalHour = $largestTotalObj->sum;
 
-        $totalHour = null;
         $devList = config('dev_lists');
         for ($startHour = 1; $startHour < $largestTotalHour; $startHour++) {
 
@@ -105,17 +104,11 @@ class TodoListHelper
 
                     if (isset($hours[$newLevel])) {
                         $selectHour = array_shift($hours[$newLevel]);
-                        if ($selectHour == null) {
-                            if ($totalHour == null) {
-                                $totalHour = $startHour - 1;
+                        foreach ($devList[$level] as $developerKey => $developer) {
+                            if ($developerKey != 0) {
+                                $selectHour = array_shift($hours[$newLevel]);
                             }
-                        } else {
-                            foreach ($devList[$level] as $developerKey => $developer) {
-                                if ($developerKey != 0) {
-                                    $selectHour = array_shift($hours[$newLevel]);
-                                }
-                                $jobList[$level . '-' . $developerKey][] = $selectHour;
-                            }
+                            $jobList[$level . '-' . $developerKey][] = $selectHour;
                         }
                     }
                 } else {
@@ -130,10 +123,13 @@ class TodoListHelper
             }
         }
 
+        $firstJobList = current($jobList);
+        $totalCompletionHour = is_array($firstJobList) ? count($firstJobList) : 0;
+
         return [
             'jobList' => $jobList,
             'weeklyJobList' => $this->weeklyJobList($jobList),
-            'totalHour' => $totalHour
+            'totalCompletionHour' => $totalCompletionHour,
         ];
     }
 }
