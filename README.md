@@ -18,3 +18,11 @@ php artisan migrate
 ```bash
 php artisan todo:create-job-lists
 ```
+
+## Yeni Provider Api Eklenmesi
+
+app/Http/JobList klasörü altına 'BaseProviderAbstract' class'ından türetilerek yeni Provider dosyası oluşturulmalıdır. Ardından config/job_lists.php dosyasına oluşturulan dosyanın adı yazılmalıdır.
+
+## Notlar
+
+Dashboardta yer alan hesaplamaları ve listelemeleri veritabanına kaydetmedim algoritma dendiği için sadece hesaplama ve parçalama yapıp yazdırdım.
