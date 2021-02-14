@@ -26,7 +26,7 @@ class ProviderOne extends BaseProviderAbstract
 
             $this->saveData($this->listId, $title, $title, $time, $difficulty);
         }
-        // TODO kayıt edilen sonuçlar, hatalı oluşan sonuçlar gibi detaylı veri gönderilebilir
+
         return true;
     }
 }

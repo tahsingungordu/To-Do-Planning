@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class CreateJobLists extends Command
 {
@@ -58,6 +59,9 @@ class CreateJobLists extends Command
                 }
 
             }
+
+            Cache::flush();
+            $this->info('Tüm cache silindi.');
 
             $this->line('İş listeleri kayıt işlemi tamamlandı.');
         }
